@@ -1,0 +1,36 @@
+name: BloodOfDemons
+version: '1.0-SNAPSHOT'
+main: org.crrupt.bloodOfDemons.BloodOfDemons
+api-version: '1.21'
+
+commands:
+  bd:
+    description: Gives the player the Blood of Demons.
+    usage: /bd
+    permission: bloodofdemon.use
+  ability1:
+    description: Activates Cursed Skin (5 seconds of invulnerability).
+    usage: /ability1
+    permission: bloodofdemon.ability1
+  ability2:
+    description: Activates Forced Pull (Pulls and launches enemies).
+    usage: /ability2
+    permission: bloodofdemon.ability2
+  ability3:
+    description: Activates Red Wave (Blood wave that stuns enemies).
+    usage: /ability3
+    permission: bloodofdemon.ability3
+
+permissions:
+  bloodofdemon.use:
+    description: Allows the player to use /bd.
+    default: true
+  bloodofdemon.ability1:
+    description: Allows the player to use /ability1.
+    default: true
+  bloodofdemon.ability2:
+    description: Allows the player to use /ability2.
+    default: true
+  bloodofdemon.ability3:
+    description: Allows the player to use /ability3.
+    default: true
