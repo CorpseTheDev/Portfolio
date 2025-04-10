@@ -1,0 +1,8 @@
+name: HauntedHammer
+version: '1.0-SNAPSHOT'
+main: org.crrupt.hauntedHammer.HauntedHammer
+api-version: '1.21'
+commands:
+  hh:
+    description: Gives the player a Haunted Hammer
+    usage: /<command>
