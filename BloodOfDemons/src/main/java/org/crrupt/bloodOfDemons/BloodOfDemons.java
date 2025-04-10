@@ -52,7 +52,7 @@ public class BloodOfDemons extends JavaPlugin implements Listener {
             return true;
         });
 
-        // Reset all empowered players and invalidate old bottles
+        
         empoweredPlayers.clear();
     }
 
@@ -85,7 +85,7 @@ public class BloodOfDemons extends JavaPlugin implements Listener {
         ItemStack bloodBottle = new ItemStack(Material.POTION);
         ItemMeta meta = bloodBottle.getItemMeta();
         meta.setDisplayName("§4Blood of Demons");
-        meta.setCustomModelData(1002); // New Custom Model Data to invalidate old bottles
+        meta.setCustomModelData(1002); 
         meta.getPersistentDataContainer().set(bloodKey, PersistentDataType.BYTE, (byte) 1);
         bloodBottle.setItemMeta(meta);
         return bloodBottle;
