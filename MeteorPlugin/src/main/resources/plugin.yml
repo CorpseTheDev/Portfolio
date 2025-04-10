@@ -1,0 +1,8 @@
+name: MeteorPlugin
+main: org.crrupt.meteorPlugin.MeteorPlugin
+version: 1.0
+api-version: 1.21
+commands:
+  meteor:
+    description: Summon a meteor at specific coordinates
+    usage: /meteor <x> <y> <z>
