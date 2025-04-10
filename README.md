@@ -22,9 +22,7 @@ Before exploring the projects, make sure you have the following installed:
 
 ## **How to Explore the Repository**
 
-### **1. Clone the Repository**
+### **In Each Of The Files A ReadME will be provided but one general rule for all of them is, the jar file for the plugin is found in the target folder**
 
-**First, clone the repository to your local machine:**
 
-```bash
-git clone https://github.com/your-username/minecraft-dev-portfolio.git
+
