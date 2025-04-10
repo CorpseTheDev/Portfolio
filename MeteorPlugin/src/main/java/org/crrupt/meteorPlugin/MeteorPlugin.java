@@ -55,15 +55,15 @@ public class MeteorPlugin extends JavaPlugin implements Listener, TabExecutor {
 
     private void spawnMeteor(Location target) {
         World world = target.getWorld();
-        Location spawnLoc = target.clone().add(0, 120, 0); // Spawn from higher up
+        Location spawnLoc = target.clone().add(0, 120, 0); 
 
         Fireball meteor = (Fireball) world.spawnEntity(spawnLoc, EntityType.FIREBALL);
-        meteor.setVelocity(new Vector(0, -3, 0)); // Faster downward velocity
-        meteor.setYield(150); // Bigger explosion
+        meteor.setVelocity(new Vector(0, -3, 0)); 
+        meteor.setYield(150); 
         meteor.setIsIncendiary(true);
         meteor.setShooter(null);
 
-        // Create more dramatic meteor approach effects
+        
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -74,7 +74,7 @@ public class MeteorPlugin extends JavaPlugin implements Listener, TabExecutor {
 
                 Location currentLoc = meteor.getLocation();
 
-                // Enhanced particle effects
+               
                 for (int i = 0; i < 30; i++) {
                     world.spawnParticle(Particle.FLAME, currentLoc, 80, 1.5, 1.5, 1.5, 0.05);
                     world.spawnParticle(Particle.LAVA, currentLoc, 50, 1.8, 1.8, 1.8, 0.03);
@@ -86,9 +86,9 @@ public class MeteorPlugin extends JavaPlugin implements Listener, TabExecutor {
                 world.playSound(currentLoc, Sound.ITEM_FIRECHARGE_USE, 2.0f, 0.6f);
                 world.playSound(currentLoc, Sound.ENTITY_GHAST_SHOOT, 1.0f, 0.4f);
             }
-        }.runTaskTimer(this, 0L, 2L); // Run more frequently for smoother effects
+        }.runTaskTimer(this, 0L, 2L); 
 
-        // Delay impact check
+     
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -96,10 +96,10 @@ public class MeteorPlugin extends JavaPlugin implements Listener, TabExecutor {
 
                 Location impactLoc = meteor.getLocation();
 
-                // MASSIVE explosion - power 1000 instead of 50
+           
                 world.createExplosion(impactLoc, 1000.0f, true, true);
 
-                // Enhanced impact effects
+            
                 world.playSound(impactLoc, Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 10.0f, 0.3f);
                 world.playSound(impactLoc, Sound.ENTITY_WITHER_BREAK_BLOCK, 8.0f, 0.5f);
                 world.playSound(impactLoc, Sound.ENTITY_GENERIC_EXPLODE, 10.0f, 0.4f);
@@ -110,22 +110,22 @@ public class MeteorPlugin extends JavaPlugin implements Listener, TabExecutor {
                 world.spawnParticle(Particle.LAVA, impactLoc, 600, 40, 40, 40, 0.3);
                 world.spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, impactLoc, 400, 40, 40, 40, 0.1);
 
-                // Replace all blocks around the impact with Netherrack and Basalt
+               
                 List<Material> replaceBlocks = Arrays.asList(Material.NETHERRACK, Material.BASALT);
                 Random random = new Random();
-                int radius = 200; // Increased radius for more impact
+                int radius = 200; 
 
-                // Create a huge crater with Netherrack and Basalt
+               
                 for (int x = -radius; x <= radius; x++) {
-                    for (int y = -8; y <= 4; y++) { // Deeper crater
+                    for (int y = -8; y <= 4; y++) { 
                         for (int z = -radius; z <= radius; z++) {
-                            // Calculate distance from center
+                            
                             double distance = Math.sqrt(x * x + y * y + z * z);
 
                             if (distance <= radius) {
                                 Location blockLoc = impactLoc.clone().add(x, y, z);
 
-                                // Replace blocks with Netherrack and Basalt
+                               
                                 if (blockLoc.getBlock().getType().isSolid() || random.nextInt(10) == 0) {
                                     Material chosen = replaceBlocks.get(random.nextInt(replaceBlocks.size()));
                                     blockLoc.getBlock().setType(chosen);
@@ -135,7 +135,7 @@ public class MeteorPlugin extends JavaPlugin implements Listener, TabExecutor {
                     }
                 }
 
-                // Drop meteor core item
+               
                 ItemStack meteorCore = new ItemStack(Material.FIRE_CHARGE, 1);
                 ItemMeta meta = meteorCore.getItemMeta();
                 meta.setDisplayName(ChatColor.RED + "Meteor Core");
@@ -146,17 +146,17 @@ public class MeteorPlugin extends JavaPlugin implements Listener, TabExecutor {
                 meteorCore.setItemMeta(meta);
                 world.dropItemNaturally(impactLoc, meteorCore);
 
-                // Continue effects after impact
+                
                 new BukkitRunnable() {
                     int ticks = 0;
                     @Override
                     public void run() {
-                        if (ticks > 200) { // Continue for 10 seconds
+                        if (ticks > 200) { 
                             cancel();
                             return;
                         }
 
-                        // Ongoing effects in the crater
+                        
                         world.spawnParticle(Particle.LAVA, impactLoc, 50, radius / 2, 5, radius / 2, 0.1);
                         world.spawnParticle(Particle.FLAME, impactLoc, 30, radius / 2, 5, radius / 2, 0.05);
                         world.spawnParticle(Particle.LARGE_SMOKE, impactLoc, 20, radius / 2, 8, radius / 2, 0.01);
@@ -170,6 +170,6 @@ public class MeteorPlugin extends JavaPlugin implements Listener, TabExecutor {
                     }
                 }.runTaskTimer(MeteorPlugin.this, 20L, 1L);
             }
-        }.runTaskLater(this, 100L); // Slightly longer delay for dramatic effect
+        }.runTaskLater(this, 100L); 
     }
 }
