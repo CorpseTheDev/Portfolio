@@ -1,0 +1,15 @@
+name: RapierOfCreation
+version: 1.0
+main: org.crrupt.rapierOfCreation.RapierOfCreation
+author: Crrupt
+description: Adds the Rapier of Creation with wind and lightning abilities.
+api-version: 1.21
+commands:
+  roc:
+    description: Gives the player the Rapier of Creation.
+    usage: /roc
+    permission: rapierofcreation.give
+permissions:
+  rapierofcreation.give:
+    description: Allows a player to get the Rapier of Creation.
+    default: op
