@@ -1,0 +1,13 @@
+name: LantisTiers
+version: 1.0
+main: org.crrupt.lantisTiers.LantisTiers
+api-version: '1.21'
+commands:
+  lantistiers:
+    description: Tier command
+    usage: /lantistiers <check|assign>
+    aliases: [tiers]
+permissions:
+  lantistiers.assign:
+    description: Allows assigning tiers
+    default: op
